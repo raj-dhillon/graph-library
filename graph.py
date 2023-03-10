@@ -93,3 +93,4 @@ class Graph:
     # Clears all nodes and edges from the graph
     def clear(self):
         self.list.clear()
+        
