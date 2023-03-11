@@ -1,3 +1,22 @@
+#  Title:		A simple implementation of a graph library for Python using adjacency lists.
+# 
+#  Features:    This graph library allows a user to develop an undirected and unweighted graph for any given number of
+#               nodes and edges. It allows the nodes and edges to be added individually or through a list for fast creation.
+#               Some useful methods in this library are: 
+#                   The BFS traversal, which returns a list of tuples each demonstrating
+#                       the order in which they were found.
+# 
+#                   The DFS traversal, which is similar to the BFS traversal but does so
+#                       using a DFS algorithm.
+# 
+#                   A path search, which allows the user to find the shortest path between two nodes.
+# 
+#                   A shortest paths search, which returns the shortest pass from a specific node to every node
+#                       in the graph that it is capable of visiting.
+# 
+#  Author:		Rajdeep Dhillon
+#  Date:		March 11, 2023
+
 from collections import deque
 
 class Graph:
