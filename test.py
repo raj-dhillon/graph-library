@@ -73,3 +73,8 @@ print(path)
 path = g.path(3, 4)
 print("Path from 3 to 4 is:")
 print(path)
+
+# Shortest paths
+shortest_paths = g.shortest_paths(3)
+print("Shortest paths from 3 to the rest of the nodes are:")
+print(shortest_paths)

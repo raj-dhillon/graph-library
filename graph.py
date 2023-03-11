@@ -1,15 +1,11 @@
 from collections import deque
 
-class Node:
-    def __init__(self, data) -> None:
-        self.node = data
-
 class Graph:
     def __init__(self) -> None:
         self.list = dict()
 
-    # Allows you to add a vertex to the graph
-    def add_node(self, node: Node):
+    # Allows you to add a single vertex to the graph
+    def add_node(self, node):
         if not self.list.get(node):
             self.list[node] = []
         else:
@@ -24,7 +20,7 @@ class Graph:
                 print("Node already exists!")
     
     # Allows you to add an edge to the graph
-    def add_edge(self, node1: Node, node2: Node):
+    def add_edge(self, node1, node2):
         if node2 not in self.list[node1]:
             self.list[node1].append(node2)
             if not self.list.get(node2):
@@ -46,7 +42,8 @@ class Graph:
             else:
                 print("Edge already exists!")
     
-    # BFS traversal
+    # BFS traversal: requires an input node to begin search on, and returns a list 
+    # consisting of tuples, with each tuple showcasing the search order
     def bfs_traversal(self, node):
         if node in self.list:
             bfs_travel_list = []
@@ -68,7 +65,8 @@ class Graph:
         else:
             return None
 
-    # DFS traversal
+    # DFS traversal: requires an input node to begin search on, and returns a list 
+    # consisting of tuples, with each tuple showcasing the search order
     def dfs_traversal(self, node):
         if node in self.list:
             dfs_travel_list = []
@@ -90,8 +88,21 @@ class Graph:
         else:
             return None
         
-    # Shortest paths from node to all others
-    # Path from one node to another specific node
+    # Shortest paths from node to all others: requires a start node, from which it calculates a path and distance
+    # to all nodes that it can visit. Returns a dictionary tuples of each start and end node as keys, with their values
+    # being another dictionary containing the keys path and distance, each storing their respective data
+    def shortest_paths(self, start):
+        shortest_paths = {}
+        for node in self.list:
+            if node != start:
+                path_data = self.path(start, node)
+                shortest_paths[(start, node)] = {'path': path_data[0], 'distance': path_data[1]}
+
+        return shortest_paths
+
+    # Path from one node to another specific node: requires input v and w which are the start and end node respectively.
+    # It returns a list with the first value being a tuple storing the path traveled, and the second value being the distance
+    # that it took to do so.
     def path(self, v, w):
         if v in self.list:
             visited = {}
@@ -104,12 +115,14 @@ class Graph:
 
                 if vertex == w:
                     path = []
-
+                    # To ensure that the starting node isn't counted in the distance
+                    distance = -1
                     while vertex is not None:
+                        distance += 1
                         path.append(vertex)
                         vertex = visited[vertex]
                     
-                    return list(reversed(path))
+                    return [tuple(reversed(path)), distance]
 
                 if vertex != None:
                     for n in self.list[vertex]:
