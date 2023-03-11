@@ -53,3 +53,23 @@ print(bfs_trav)
 dfs_trav = g.dfs_traversal(5)
 print("DFS Traversal:")
 print(dfs_trav)
+
+# Path u-w
+path = g.path(5, 7)
+print("Path from 5 to 7 is:")
+print(path)
+
+# Path u-w
+path = g.path(6, 7)
+print("Path from 6 to 7 is:")
+print(path)
+
+# Path u-w
+path = g.path(3, 7)
+print("Path from 3 to 7 is:")
+print(path)
+
+# Path u-w
+path = g.path(3, 4)
+print("Path from 3 to 4 is:")
+print(path)

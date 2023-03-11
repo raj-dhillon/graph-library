@@ -64,6 +64,9 @@ class Graph:
                         queued.append(n)
 
             return bfs_travel_list
+        
+        else:
+            return None
 
     # DFS traversal
     def dfs_traversal(self, node):
@@ -83,8 +86,39 @@ class Graph:
                         stack.append(n)
 
             return dfs_travel_list
+        
+        else:
+            return None
+        
     # Shortest paths from node to all others
     # Path from one node to another specific node
+    def path(self, v, w):
+        if v in self.list:
+            visited = {}
+            queued = deque()
+            queued.append(v)
+            visited[v] = None
+
+            while len(queued) != 0:
+                vertex = queued.popleft()
+
+                if vertex == w:
+                    path = []
+
+                    while vertex is not None:
+                        path.append(vertex)
+                        vertex = visited[vertex]
+                    
+                    return list(reversed(path))
+
+                if vertex != None:
+                    for n in self.list[vertex]:
+                        if n not in visited:
+                            visited[n] = vertex
+                            queued.append(n)
+        
+        else:
+            return None
 
     # Prints the adjacency list
     def print_graph(self):
