@@ -2,6 +2,7 @@ from graph import Graph as g
 
 DONE = False
 
+# Main loop of the program
 def load_program():
     graph = g()
     while not DONE:
@@ -22,7 +23,7 @@ def display_options():
     print("9. Clear graph.")
     print("10. Exit program.\n")
 
-# Process user input
+# Processes the user input, and completes their request
 def process_input(graph: g):
     selection = input("Selection (1-10): ")
     if selection.isnumeric():
@@ -49,8 +50,7 @@ def process_input(graph: g):
                 graph.add_edge(edges[0], edges[1])
 
         case 4:
-            print(graph.print_graph())
-            print("\n")
+            graph.print_graph()
 
         case 5:
             node = input("Enter a node: ")
@@ -84,5 +84,9 @@ def process_input(graph: g):
 
         case _:
             print("Incorrect selection!")
+        
+    print("\n")
 
+
+# runs the program
 load_program()
