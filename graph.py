@@ -40,6 +40,8 @@ class Graph:
     
     # Allows you to add an edge to the graph
     def add_edge(self, node1, node2):
+        if node1 not in self.list:
+            self.list[node1] = []
         if node2 not in self.list[node1]:
             self.list[node1].append(node2)
             if not self.list.get(node2):
@@ -52,6 +54,8 @@ class Graph:
     # Allows you to add a list of edges to the graph
     def add_edges(self, edges: list[tuple]):
         for node1, node2 in edges:
+            if node1 not in self.list:
+                self.list[node1] = []
             if node2 not in self.list[node1]:
                 self.list[node1].append(node2)
                 if not self.list.get(node2):
@@ -115,7 +119,8 @@ class Graph:
         for node in self.list:
             if node != start:
                 path_data = self.path(start, node)
-                shortest_paths[(start, node)] = {'path': path_data[0], 'distance': path_data[1]}
+                if path_data:
+                    shortest_paths[(start, node)] = {'path': path_data[0], 'distance': path_data[1]}
 
         return shortest_paths
 

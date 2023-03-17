@@ -1,5 +1,4 @@
 from graph import Graph
-from graph import Node
 
 
 g = Graph()
