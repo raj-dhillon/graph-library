@@ -5,6 +5,7 @@ DONE = False
 # Main loop of the program
 def load_program():
     graph = g()
+    print("\nWelcome to the graph library application!\n")
     while not DONE:
         display_options()
         process_input(graph)

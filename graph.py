@@ -110,6 +110,12 @@ class Graph:
         
         else:
             return None
+
+    # Due to this graph library only accepting unweighted, undirected edges, 
+    # dijkstras is essentially the same as BFS, and using a PQ and such
+    # would be a waste of resources
+    def dijkstra(self, node):
+        return self.bfs_traversal(node)
         
     # Shortest paths from node to all others: requires a start node, from which it calculates a path and distance
     # to all nodes that it can visit. Returns a dictionary tuples of each start and end node as keys, with their values
